@@ -20,15 +20,25 @@ const StyledWrapper = styled.div`
 
 const StyledForm = styled.form`
   display: flex;
-
   flex-direction: column;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: left;
   padding-top: 20px;
   height: 100%;
 
   label {
-    height: 35%;
+    padding-top: 10px;
+    transform: translateX(100px);
+
+    select {
+      display: block;
+      padding: 3px;
+      margin-top: 5px;
+      border-radius: 10px;
+    }
+  }
+  label:first-of-type {
+    padding-top: 50px;
   }
 `;
 
@@ -37,7 +47,10 @@ const StyledHeadingForm = styled(Heading)`
 `;
 
 const EditBtn = styled(ButtonEdit)`
-  justify-self: end !important;
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 const EditForm = ({ deleteButton, products, editedIdProduct, exitForm, editProduct }) => {
@@ -76,7 +89,7 @@ const EditForm = ({ deleteButton, products, editedIdProduct, exitForm, editProdu
         <StyledHeadingForm>Edytuj: {name}</StyledHeadingForm>
 
         <label htmlFor="amount">
-          Ilość:
+          Ilość: <br />
           <Input type="number" name="amount" value={valueAmount} onChange={handleChange} />
         </label>
         <label name="unit">

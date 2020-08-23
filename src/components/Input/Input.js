@@ -4,6 +4,8 @@ import styled from 'styled-components';
 export const Input = styled.input `
     padding: 3px 10px;
     margin: 10px 5px;
+    border-radius: 10px;
+    border: 1px gray solid;
 `;
 
 export const SearchInput = styled.input `
