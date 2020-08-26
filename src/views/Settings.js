@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import Menu from '../organisms/Menu';
+import FormTemplate from '../templates/FormTemplate';
 import { Heading } from '../components/Heading/Heading';
-import SettingNewLimitForm from '../organisms/SettingNewLimitForm';
 import { ButtonAddItem } from '../components/Button/Button';
-import { Paragraph, ParagraphLimit, ParagraphLimitAmount } from '../components/Paragraph/Paragraph';
+import { ParagraphLimit, ParagraphLimitAmount } from '../components/Paragraph/Paragraph';
 
 const WrapperSettings = styled.div`
   margin: 40px 0 0 20px;
 
   span {
-    text-align: center;
-    margin: 0 auto;
+    display: block;
+    /* text-align: center; */
+    margin: 20px auto 50px auto;
+    padding-left: 20px;
+    font-size: ${({ theme }) => theme.fontSize.normal};
   }
 `;
 
@@ -80,12 +83,6 @@ const Limit = styled.li`
   }
 `;
 
-const SubHeading = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.large};
-  text-align: left;
-  margin-left: 3%;
-`;
-
 const SetNewLimitButton = styled(ButtonAddItem)`
   /* position: absolute;
   top: 5%;
@@ -116,7 +113,7 @@ const Settings = ({ products }) => {
   //valueLimitForm - zminna boolen, która sprawdza czy ma się odpalić formularz zmiany limitu dla danego produktu
   const [valueLimitForm, setValueLimitForm] = useState(false);
 
-  const deleteLimitForm = () => {
+  const deleteForm = () => {
     setValueLimitForm(false);
   };
 
@@ -124,8 +121,7 @@ const Settings = ({ products }) => {
     <div>
       <Menu />
       <WrapperSettings>
-        <Heading>Ustawienia</Heading>
-        <SubHeading>Limity</SubHeading>
+        <Heading>Ustawienia limitów</Heading>
         <span>
           Ustaw limity dla produktów. Produkt pojawi się na liście zakupów gdy w spiżarni będzie go
           mniej niż ustawiony limit.
@@ -148,7 +144,7 @@ const Settings = ({ products }) => {
               </ParagraphLimitAmount>
             </Limit>
           ))}
-          {valueLimitForm && <SettingNewLimitForm deleteLimitForm={() => deleteLimitForm()} />}
+          {valueLimitForm && <FormTemplate type="set" deleteForm={() => deleteForm()} />}
         </WrapperLimits>
       </WrapperSettings>
       {console.log(valueLimitForm)}

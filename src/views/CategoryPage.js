@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { connect } from 'react-redux';
 import Menu from '../organisms/Menu';
 import Card from '../molecules/Card';
-import EditForm from '../organisms/EditForm';
-import NewItemProducts from '../organisms/NewItemProducts';
+import FormTemplate from '../templates/FormTemplate';
 import { ButtonAddItem } from '../components/Button/Button';
 import { Heading } from '../components/Heading/Heading';
 import { transformId, transferId } from '../actions/index';
@@ -82,9 +81,11 @@ const CategoryPage = ({ products, category, transformEditedId, ...props }) => {
 
   return (
     <CategoryPageWrapper>
-      <Menu isVisible={isAvailableNewItem} isNoClicked={isAvailableNewItem} />
-      <Heading isVisible={isAvailableNewItem}>Kategoria: {categoryNameFromPath}</Heading>
-      <CardsWrapper isVisible={isAvailableNewItem}>
+      <Menu isVisible={isAvailableNewItem || flagEditForm} isNoClicked={isAvailableNewItem} />
+      <Heading isVisible={isAvailableNewItem || flagEditForm}>
+        Kategoria: {categoryNameFromPath}
+      </Heading>
+      <CardsWrapper isVisible={isAvailableNewItem || flagEditForm}>
         {products.map((product) => {
           // Aplikacja po ścieżce sprawdza w jakiej kategorii się znajdujemy
           const checkWhichCategory = categoryNameFromPath === product.categoryName;
@@ -112,19 +113,21 @@ const CategoryPage = ({ products, category, transformEditedId, ...props }) => {
       {/* Formularz dodawania produktu */}
       {console.log(isAvailableNewItem)};
       {isAvailableNewItem && (
-        <NewItemProducts
-          deleteButton={(option) => changeStatusForm((option = 'new'))}
+        <FormTemplate
+          type="add"
+          deleteForm={(option) => changeStatusForm((option = 'new'))}
           categoryName={categoryNameFromPath}
         />
       )}
       {/* Formularz edycji produktu */}
       {/* do formularza chcemy przekazac propsy, które zidentyfikują dany produkt */}
       {flagEditForm && (
-        <EditForm
+        <FormTemplate
+          type="edit"
           idEditedProduct={idFromCard}
-          deleteButton={(option) => changeStatusForm((option = 'edit'))}
+          deleteForm={(option) => changeStatusForm((option = 'edit'))}
           exitForm={() => exitFormAfterSubmit}
-        ></EditForm>
+        ></FormTemplate>
       )}
     </CategoryPageWrapper>
   );
