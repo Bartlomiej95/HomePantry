@@ -1,12 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { ButtonIcon } from '../components/ButtonIcon/ButtonIcon';
 import HomepantryIcon from '../assets/icons/homepantry.png';
 import ListIcon from '../assets/icons/list.png';
 import SettingsIcon from '../assets/icons/settings.png';
 import MenuIcon from '../assets/icons/menu.png';
-import { Button } from '../components/Button/Button';
+import { NavLink } from 'react-router-dom';
+import { ButtonIcon } from '../components/ButtonIcon/ButtonIcon';
 
 const StyledWrapper = styled.nav`
   position: fixed;
@@ -49,7 +48,22 @@ const StyledButtonIconWrapper = styled.div`
 const LogoWrapper = styled.div`
   font-family: 'Pacifico', cursive;
   height: 20%;
-  text-align: center;
+
+  span {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    font-size: ${({ theme }) => theme.fontSize.xxl};
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    @media (max-width: 374px) {
+      font-size: ${({ theme }) => theme.fontSize.medium};
+    }
+    @media (min-width: 375px) and (max-width: 768px) {
+      font-size: ${({ theme }) => theme.fontSize.normal};
+    }
+  }
 `;
 
 const WrapperFlyoutMenu = styled.div`
@@ -102,7 +116,9 @@ const Menu = ({ children, isVisible, isNoClicked }) => {
     <>
       <StyledWrapper isVisible={isVisible} toggleMenu={flyoutMenu}>
         <LogoWrapper>
-          <h2>Pantry</h2>
+          <span>
+            Home <br /> Pantry
+          </span>
         </LogoWrapper>
         <StyledButtonIconWrapper>
           <ButtonIcon

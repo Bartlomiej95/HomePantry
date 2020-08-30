@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { addProductAction } from '../actions/index';
-import { editProduct as editProductAction } from '../actions/index';
-import { setLimitAction } from '../actions/index';
+import {
+  addProductAction,
+  setLimitAction,
+  editProduct as editProductAction,
+} from '../actions/index';
 import { Heading } from '../components/Heading/Heading';
 import { Input } from '../components/Input/Input';
 import { ButtonDelete, ButtonEdit } from '../components/Button/Button';
@@ -11,14 +13,24 @@ import { ButtonDelete, ButtonEdit } from '../components/Button/Button';
 const Wrapper = styled.div`
   position: fixed;
   top: 50%;
-  left: 60%;
-  height: 40vh;
+  left: 50%;
+  height: 50vh;
   width: 40vw;
   transform: translate(-50%, -50%);
   text-align: center;
   border: 1px solid gray;
   background-color: whitesmoke;
   z-index: 10;
+
+  @media (max-width: 374px) {
+    width: 80vw;
+  }
+  @media (min-width: 375px) and (max-width: 768px) {
+    width: 60vw;
+  }
+  @media (min-width: 769px) {
+    width: 500px;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -30,6 +42,16 @@ const StyledForm = styled.form`
   width: 80%;
   margin: 0 auto;
   text-align: center;
+
+  @media (max-width: 374px) {
+    width: 95%;
+  }
+  @media (min-width: 375px) and (max-width: 768px) {
+    width: 90%;
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    width: 80%;
+  }
 `;
 
 const FormHeading = styled(Heading)`
@@ -41,6 +63,17 @@ const FormMainFields = styled.div`
   flex-direction: column;
   width: 60%;
   margin: 0 auto;
+
+  @media (max-width: 374px) {
+    width: 100%;
+  }
+
+  @media (min-width: 375px) and (max-width: 768px) {
+    width: 95%;
+  }
+  label {
+    margin-top: 10px;
+  }
 `;
 
 const BtnEdit = styled(ButtonEdit)`
@@ -48,6 +81,25 @@ const BtnEdit = styled(ButtonEdit)`
   bottom: 3%;
   left: 50%;
   transform: translateX(-50%);
+  border: 1px solid black;
+  font-size: ${({ theme }) => theme.fontSize.normal};
+  height: 30px;
+
+  @media (max-width: 374px) {
+    font-size: ${({ theme }) => theme.fontSize.medium};
+    height: 30px;
+  }
+
+  @media (min-width: 374px) and (max-width: 768px) {
+    font-size: ${({ theme }) => theme.fontSize.medium};
+    height: 30px;
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    font-size: ${({ theme }) => theme.fontSize.medium};
+    height: 30px;
+    width: 45%;
+  }
 `;
 
 const FormTemplate = ({

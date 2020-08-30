@@ -8,7 +8,6 @@ export const theme = {
     },
 
     backgroundColor: {
-        // main: 'lightblue',
         main: '#87cefa',
         second: '#c3e6fc',
     },
@@ -31,6 +30,9 @@ export const theme = {
         mobileHeightCard: '120px',
         heightCategory: '10vh',
         widthCategory: '50%',
+    },
+    form: {
+
     }
 
 }

@@ -17,11 +17,15 @@ export const ButtonAddItem = styled(Button)`
 export const ButtonEdit = styled(Button)`
   border-radius: 10px;
   margin-bottom: 10px;
-  width: 25%;
+  width: 40%;
   height: 20px;
   font-size: 10px;
   font-weight: bold;
   align-self: center;
+  /* 
+  @media (max-width: 374px) {
+    width: 50%;
+  } */
 `;
 
 export const ButtonDelete = styled(Button)`
