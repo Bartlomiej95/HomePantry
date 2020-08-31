@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { connect } from 'react-redux';
 import Menu from '../organisms/Menu';
 import FormTemplate from '../templates/FormTemplate';
@@ -17,6 +17,12 @@ const WrapperSettings = styled.div`
     padding-left: 20px;
     font-size: ${({ theme }) => theme.fontSize.normal};
   }
+
+  ${({ isVisible }) =>
+    isVisible &&
+    css`
+      opacity: 0.1;
+    `};
 `;
 
 const WrapperLimits = styled.ul`
@@ -119,8 +125,8 @@ const Settings = ({ products }) => {
 
   return (
     <div>
-      <Menu />
-      <WrapperSettings>
+      <Menu isVisible={valueLimitForm} />
+      <WrapperSettings isVisible={valueLimitForm}>
         <Heading>Ustawienia limitów</Heading>
         <span>
           Ustaw limity dla produktów. Produkt pojawi się na liście zakupów gdy w spiżarni będzie go
@@ -144,9 +150,9 @@ const Settings = ({ products }) => {
               </ParagraphLimitAmount>
             </Limit>
           ))}
-          {valueLimitForm && <FormTemplate type="set" deleteForm={() => deleteForm()} />}
         </WrapperLimits>
       </WrapperSettings>
+      {valueLimitForm && <FormTemplate type="set" deleteForm={() => deleteForm()} />}
       {console.log(valueLimitForm)}
     </div>
   );
