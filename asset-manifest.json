@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/HomePantry/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/HomePantry/static/js/main.59fcef9b.chunk.js",
-    "main.js.map": "/HomePantry/static/js/main.59fcef9b.chunk.js.map",
+    "main.js": "/HomePantry/static/js/main.fc2fdf8e.chunk.js",
+    "main.js.map": "/HomePantry/static/js/main.fc2fdf8e.chunk.js.map",
     "runtime-main.js": "/HomePantry/static/js/runtime-main.43f62610.js",
     "runtime-main.js.map": "/HomePantry/static/js/runtime-main.43f62610.js.map",
     "static/js/2.8a24248e.chunk.js": "/HomePantry/static/js/2.8a24248e.chunk.js",
     "static/js/2.8a24248e.chunk.js.map": "/HomePantry/static/js/2.8a24248e.chunk.js.map",
     "index.html": "/HomePantry/index.html",
-    "precache-manifest.e5f6474ab92a6db1bcbb75593754c1cd.js": "/HomePantry/precache-manifest.e5f6474ab92a6db1bcbb75593754c1cd.js",
+    "precache-manifest.24bfe88273cb8b0998bf1a2a83f9800c.js": "/HomePantry/precache-manifest.24bfe88273cb8b0998bf1a2a83f9800c.js",
     "service-worker.js": "/HomePantry/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/HomePantry/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.8a24248e.chunk.js.LICENSE.txt": "/HomePantry/static/js/2.8a24248e.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.43f62610.js",
     "static/js/2.8a24248e.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.59fcef9b.chunk.js"
+    "static/js/main.fc2fdf8e.chunk.js"
   ]
 }
