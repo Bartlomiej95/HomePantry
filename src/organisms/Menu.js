@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import HomepantryIcon from '../assets/icons/homepantry.png';
 import ListIcon from '../assets/icons/list.png';
 import SettingsIcon from '../assets/icons/settings.png';
 import MenuIcon from '../assets/icons/menu.png';
-import { NavLink } from 'react-router-dom';
 import { ButtonIcon } from '../components/ButtonIcon/ButtonIcon';
 
 const StyledWrapper = styled.nav`
@@ -123,21 +124,21 @@ const Menu = ({ children, isVisible, isNoClicked }) => {
         <StyledButtonIconWrapper>
           <ButtonIcon
             as={NavLink}
-            to={'/homepantry'}
+            to="/homepantry"
             icon={HomepantryIcon}
             activeclass="active"
             disabled={isNoClicked}
           />
           <ButtonIcon
             as={NavLink}
-            to={'/shoppinglist'}
+            to="/shoppinglist"
             icon={ListIcon}
             activeclass="active"
             disabled={isNoClicked}
           />
           <ButtonIcon
             as={NavLink}
-            to={'/settings'}
+            to="/settings"
             icon={SettingsIcon}
             activeclass="active"
             disabled={isNoClicked}
@@ -152,9 +153,26 @@ const Menu = ({ children, isVisible, isNoClicked }) => {
         onClick={() => setFlyoutMenu(!flyoutMenu)}
         isColored={flyoutMenu}
         disabled={isNoClicked}
-      ></MenuButtonIcon>
+      />
     </>
   );
 };
 
+Menu.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.node,
+    PropTypes.elementType,
+  ]),
+  isVisible: PropTypes.bool,
+  isNoClicked: PropTypes.bool,
+};
+
+Menu.defaultProps = {
+  children: '',
+  isVisible: false,
+  isNoClicked: false,
+};
 export default Menu;

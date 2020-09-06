@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Menu from '../organisms/Menu';
 import FormTemplate from '../templates/FormTemplate';
@@ -156,6 +157,29 @@ const Settings = ({ products }) => {
       {console.log(valueLimitForm)}
     </div>
   );
+};
+
+Settings.propTypes = {
+  products: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    categoryName: PropTypes.oneOf([
+      'drinks',
+      'animals',
+      'fruits',
+      'cosmetics',
+      'groceries',
+      'breads',
+    ]),
+    categoryId: PropTypes.number,
+    amount: PropTypes.number,
+    unit: PropTypes.string,
+    limit: PropTypes.number,
+  }),
+};
+
+Settings.defaultProps = {
+  products: {},
 };
 
 const mapStateToProps = (state) => {

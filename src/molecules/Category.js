@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-// import { connect } from 'react-redux';
 import { Heading, CategoryHeading } from '../components/Heading/Heading';
 
 const transformCategories = keyframes`
@@ -79,7 +79,7 @@ const ImageCategory = styled.img`
   }
 `;
 
-const Category = ({ title, name, id, icon, itemColor }) => {
+const Category = ({ title, name, id, icon }) => {
   const [isCategoryClicked, setCategoryClicked] = useState(false);
 
   if (isCategoryClicked) {
@@ -87,12 +87,39 @@ const Category = ({ title, name, id, icon, itemColor }) => {
   }
 
   return (
-    <CategoryWrapper col={itemColor} onClick={() => setCategoryClicked(!isCategoryClicked)}>
+    <CategoryWrapper onClick={() => setCategoryClicked(!isCategoryClicked)}>
       <LpHeading>{id}</LpHeading>
-      <ImageCategory src={icon}></ImageCategory>
+      <ImageCategory src={icon} />
       <CategoryHeading>{title}</CategoryHeading>
     </CategoryWrapper>
   );
+};
+
+Category.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.oneOf([
+    'Napoje',
+    'Artykuły spożywcze',
+    'Pieczywo',
+    'Kosemtyki',
+    'Owoce i warzywa',
+    'Dla zwierząt',
+  ]),
+  name: PropTypes.oneOf(['animals', 'fruits', 'cosmetics', 'breads', 'groceries', 'drinks']),
+  icon: PropTypes.oneOf([
+    '/Category/drink.png',
+    '/Category/groceries.png',
+    '/Category/breads.png',
+    '/Category/cosmetics.png',
+    '/Category/fruit.png',
+    '/Category/animals.png',
+  ]),
+};
+
+Category.defaultProps = {
+  title: 'Tytuł kategorii',
+  name: '',
+  icon: '',
 };
 
 export default Category;

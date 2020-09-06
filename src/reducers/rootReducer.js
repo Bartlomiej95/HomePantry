@@ -96,47 +96,40 @@ const data = {
       title: 'Napoje',
       name: 'drinks',
       icon: '/Category/drink.png',
-      color: '#55BFD9',
     },
     {
       id: 2,
       title: 'Artykuły spożywcze',
       name: 'groceries',
       icon: '/Category/groceries.png',
-      color: '#B661FA',
     },
     {
       id: 3,
       title: 'Pieczywo',
       name: 'breads',
       icon: '/Category/breads.png',
-      color: '#48FA72',
     },
     {
       id: 4,
       title: 'Kosmetyki',
       name: 'cosmetics',
       icon: '/Category/cosmetics.png',
-      color: '#FA912F',
     },
     {
       id: 5,
       title: 'Owoce i warzywa',
       name: 'fruits',
       icon: '/Category/fruit.png',
-      color: '#EBFA3C',
     },
     {
       id: 6,
       title: 'Dla zwierząt',
       name: 'animals',
       icon: '/Category/animals.png',
-      color: 'rgba(111, 45, 142, 0.5)',
     },
   ],
-  editedIdProduct: null
+  editedIdProduct: null,
 };
-
 
 const rootReducer = (state = data, action) => {
   switch (action.type) {
@@ -164,16 +157,6 @@ const rootReducer = (state = data, action) => {
         }),
       };
 
-    case 'SERACH_PRODUCT':
-      return {
-        ...state,
-        products: [...state.products].map((product) => {
-          if (product.name.toLowerCase() === action.payload.text.toLowerCase()) {
-            return product;
-          }
-        }),
-      };
-
     case 'EDIT_PRODUCT':
       return {
         ...state,
@@ -191,12 +174,11 @@ const rootReducer = (state = data, action) => {
       return {
         ...state,
         editedIdProduct: action.payload.id,
-      }
+      };
 
-      default:
-        return state;
+    default:
+      return state;
   }
 };
-
 
 export default rootReducer;

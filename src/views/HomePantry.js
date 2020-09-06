@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Menu from '../organisms/Menu';
 import Category from '../molecules/Category';
@@ -28,6 +29,33 @@ const HomePantry = ({ category }) => (
     </WrapperCategories>
   </div>
 );
+
+HomePantry.propTypes = {
+  category: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.oneOf([
+      'Napoje',
+      'Artykuły spożywcze',
+      'Pieczywo',
+      'Kosemtyki',
+      'Owoce i warzywa',
+      'Dla zwierząt',
+    ]),
+    name: PropTypes.oneOf(['animals', 'fruits', 'cosmetics', 'breads', 'groceries', 'drinks']),
+    icon: PropTypes.oneOf([
+      '/Category/drink.png',
+      '/Category/groceries.png',
+      '/Category/breads.png',
+      '/Category/cosmetics.png',
+      '/Category/fruit.png',
+      '/Category/animals.png',
+    ]),
+  }),
+};
+
+HomePantry.defaultProps = {
+  category: {},
+};
 
 const mapStateToProps = (state) => {
   return {

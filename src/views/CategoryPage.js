@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Menu from '../organisms/Menu';
 import Card from '../molecules/Card';
 import FormTemplate from '../templates/FormTemplate';
 import { ButtonAddItem } from '../components/Button/Button';
 import { Heading } from '../components/Heading/Heading';
-import { transformId, transferId } from '../actions/index';
+import { transferId } from '../actions/index';
 
 const CategoryPageWrapper = styled.div`
   position: relative;
@@ -16,11 +17,6 @@ const CategoryPageWrapper = styled.div`
 `;
 
 const CardsWrapper = styled.div`
-  /* display: grid;
-  grid-template-columns: repeat(3, 3fr);
-  column-gap: 40px;
-  justify-items: center;
-  margin-top: 10px; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -65,13 +61,12 @@ const CategoryPage = ({ products, category, transformEditedId, ...props }) => {
   // zmienna flaga, od której zależy czy zostanie uruchomiony formularz edycji
   const [flagEditForm, setValueEditForm] = useState(false);
 
-  let idFromCard = 111;
+  let idFromCard = null;
 
   const changeStatusEditForm = (id) => {
     setValueEditForm(!flagEditForm);
     idFromCard = Number(id);
     transformEditedId(id);
-    console.log(`IDfromCArd ${idFromCard}`);
     return idFromCard;
   };
 
@@ -100,7 +95,7 @@ const CategoryPage = ({ products, category, transformEditedId, ...props }) => {
                 unit={product.unit}
                 categoryName={categoryNameFromPath}
                 isNoClicked={isAvailableNewItem}
-                statusFnEditForm={(idFromCard) => changeStatusEditForm(idFromCard)}
+                statusFnEditForm={() => changeStatusEditForm(idFromCard)}
               />
             )
           );
@@ -127,10 +122,55 @@ const CategoryPage = ({ products, category, transformEditedId, ...props }) => {
           idEditedProduct={idFromCard}
           deleteForm={(option) => changeStatusForm((option = 'edit'))}
           exitForm={() => exitFormAfterSubmit}
-        ></FormTemplate>
+        />
       )}
     </CategoryPageWrapper>
   );
+};
+
+CategoryPage.propTypes = {
+  products: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    categoryName: PropTypes.oneOf([
+      'drinks',
+      'animals',
+      'fruits',
+      'cosmetics',
+      'groceries',
+      'breads',
+    ]),
+    categoryId: PropTypes.number,
+    amount: PropTypes.number,
+    unit: PropTypes.string,
+    limit: PropTypes.number,
+  }),
+  category: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.oneOf([
+      'Napoje',
+      'Artykuły spożywcze',
+      'Pieczywo',
+      'Kosemtyki',
+      'Owoce i warzywa',
+      'Dla zwierząt',
+    ]),
+    name: PropTypes.oneOf(['animals', 'fruits', 'cosmetics', 'breads', 'groceries', 'drinks']),
+    icon: PropTypes.oneOf([
+      '/Category/drink.png',
+      '/Category/groceries.png',
+      '/Category/breads.png',
+      '/Category/cosmetics.png',
+      '/Category/fruit.png',
+      '/Category/animals.png',
+    ]),
+  }),
+  transformEditedId: PropTypes.func.isRequired,
+};
+
+CategoryPage.defaultProps = {
+  products: {},
+  category: {},
 };
 
 const mapStateToProps = (state) => {

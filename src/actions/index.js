@@ -26,15 +26,6 @@ export const setLimitAction = (id, limit) => {
     }
 }
 
-export const searchProduct = (text) => {
-    return {
-        type: 'SEARCH_PRODUCT',
-        payload: {
-            text
-        }
-    }
-}
-
 export const editProduct = (productContent) => {
     return {
         type: 'EDIT_PRODUCT',

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 export const Input = styled.input `
@@ -22,10 +21,5 @@ export const SearchInput = styled.input `
         border: 2px solid ${({ theme }) => theme.backgroundColor.main};
 
     }
-
-    &::placeholder :focus{
-        
-    }
-
        
 `;

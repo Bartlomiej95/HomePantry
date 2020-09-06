@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   addProductAction,
@@ -254,6 +255,37 @@ const FormTemplate = ({
       <ButtonDelete onClick={deleteForm}> x </ButtonDelete>
     </Wrapper>
   );
+};
+
+FormTemplate.propTypes = {
+  type: PropTypes.oneOf(['set', 'add', 'edit']).isRequired,
+  products: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    categoryName: PropTypes.oneOf([
+      'drinks',
+      'animals',
+      'fruits',
+      'cosmetics',
+      'groceries',
+      'breads',
+    ]),
+    categoryId: PropTypes.number,
+    amount: PropTypes.number,
+    unit: PropTypes.string,
+    limit: PropTypes.number,
+  }),
+  categoryName: PropTypes.oneOf(['drinks', 'animals', 'fruits', 'cosmetics', 'groceries', 'breads'])
+    .isRequired,
+  editedIdProduct: PropTypes.number.isRequired,
+  deleteForm: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired,
+  setLimit: PropTypes.func.isRequired,
+  editProduct: PropTypes.func.isRequired,
+};
+
+FormTemplate.defaultProps = {
+  products: {},
 };
 
 const mapStateToProps = (state) => {

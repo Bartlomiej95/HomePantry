@@ -1,5 +1,4 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.backgroundColor.main};
@@ -22,10 +21,6 @@ export const ButtonEdit = styled(Button)`
   font-size: 10px;
   font-weight: bold;
   align-self: center;
-  /* 
-  @media (max-width: 374px) {
-    width: 50%;
-  } */
 `;
 
 export const ButtonDelete = styled(Button)`

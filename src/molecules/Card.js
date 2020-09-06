@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { removeProductAction } from '../actions/index';
-import { Button, ButtonEdit, ButtonDelete } from '../components/Button/Button';
+import { ButtonEdit, ButtonDelete } from '../components/Button/Button';
 import { Heading, CategoryHeading } from '../components/Heading/Heading';
 
 const CardWrapper = styled.div`
@@ -70,11 +71,6 @@ const ProductAmountHeading = styled(Heading)`
   }
 `;
 
-const ButtonDeleteCard = styled(ButtonDelete)`
-  top: 0%;
-  right: 0%;
-`;
-
 const Card = ({
   id,
   name,
@@ -102,7 +98,7 @@ const Card = ({
       </CardHeadingWrapper>
 
       <CardContentWrapper>
-        <DivImg src={iconCategory}></DivImg>
+        <DivImg src={iconCategory} />
         <ProductNameHeading>{name}</ProductNameHeading>
         <ProductAmountHeading>{`${amount}${unit}`}</ProductAmountHeading>
       </CardContentWrapper>
@@ -116,6 +112,38 @@ const Card = ({
     </CardWrapper>
   );
 };
+Card.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  categoryId: PropTypes.number,
+  amount: PropTypes.number.isRequired,
+  unit: PropTypes.oneOf(['kg', 'l', 'g', 'szt.', 'rol.']).isRequired,
+  categoryName: PropTypes.oneOf(['groceries', 'drinks', 'breads', 'animals', 'cosmetics', 'fruits'])
+    .isRequired,
+  removeProduct: PropTypes.func.isRequired,
+  category: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string,
+    name: PropTypes.string,
+    icon: PropTypes.oneOf([
+      '/Category/drink.png',
+      '/Category/groceries.png',
+      '/Category/breads.png',
+      '/Category/cosmetics.png',
+      '/Category/fruit.png',
+      '/Category/animals.png',
+    ]),
+  }),
+  isNoClicked: PropTypes.bool,
+  statusFnEditForm: PropTypes.func.isRequired,
+};
+
+Card.defaultProps = {
+  categoryId: 0,
+  category: [],
+  isNoClicked: false,
+};
+
 const mapStateToProps = (state) => {
   return {
     category: state.category,

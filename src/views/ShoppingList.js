@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Menu from '../organisms/Menu';
 import { SearchInput } from '../components/Input/Input';
@@ -91,6 +92,29 @@ const ShoppingList = ({ products }) => {
       </WrapperShoppingList>
     </div>
   );
+};
+
+ShoppingList.propTypes = {
+  products: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    categoryName: PropTypes.oneOf([
+      'drinks',
+      'animals',
+      'fruits',
+      'cosmetics',
+      'groceries',
+      'breads',
+    ]),
+    categoryId: PropTypes.number,
+    amount: PropTypes.number,
+    unit: PropTypes.string,
+    limit: PropTypes.number,
+  }),
+};
+
+ShoppingList.defaultProps = {
+  products: {},
 };
 
 const mapStateToProps = (state) => {
