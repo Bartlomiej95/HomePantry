@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "14b481e1cf312e652cdbf60233d103ac",
+    "revision": "86d40f30a7ddb69e0a102048065808bb",
     "url": "/HomePantry/index.html"
   },
   {
-    "revision": "fc9c1a394dce51fedddd",
+    "revision": "286fababde7a64787423",
     "url": "/HomePantry/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/HomePantry/static/js/2.8a24248e.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "fc9c1a394dce51fedddd",
-    "url": "/HomePantry/static/js/main.20d8e30a.chunk.js"
+    "revision": "286fababde7a64787423",
+    "url": "/HomePantry/static/js/main.02852973.chunk.js"
   },
   {
     "revision": "7ababfa15378dffc176b",
