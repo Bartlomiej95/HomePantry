@@ -86,6 +86,7 @@ const Card = ({
 }) => {
   const chooseCategory = category.filter((category) => category.name === categoryName);
   const iconCategory = chooseCategory[0].icon;
+  console.log(iconCategory);
 
   const afterEditClick = () => {
     statusFnEditForm(id);
@@ -126,12 +127,12 @@ Card.propTypes = {
     title: PropTypes.string,
     name: PropTypes.string,
     icon: PropTypes.oneOf([
-      '/Category/drink.png',
-      '/Category/groceries.png',
-      '/Category/breads.png',
-      '/Category/cosmetics.png',
-      '/Category/fruit.png',
-      '/Category/animals.png',
+      'Category/drink.png',
+      'Category/groceries.png',
+      'Category/breads.png',
+      'Category/cosmetics.png',
+      'Category/fruit.png',
+      'Category/animals.png',
     ]),
   }),
   isNoClicked: PropTypes.bool,

@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
+// @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;562;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;562;700&family=Pacifico&display=swap');
 const GlobalStyle = createGlobalStyle`
 
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;562;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;562;700&family=Pacifico&display=swap');
    *, *::before, *::after {
     box-sizing: border-box;
   }

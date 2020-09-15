@@ -12,7 +12,7 @@ function App() {
   return (
     <Provider store={store}>
       <MainTemplate>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/homepantry" />} />
             <Route exact path="/homepantry" component={HomePantry} />

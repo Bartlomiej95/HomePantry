@@ -107,12 +107,12 @@ Category.propTypes = {
   ]),
   name: PropTypes.oneOf(['animals', 'fruits', 'cosmetics', 'breads', 'groceries', 'drinks']),
   icon: PropTypes.oneOf([
-    '/Category/drink.png',
-    '/Category/groceries.png',
-    '/Category/breads.png',
-    '/Category/cosmetics.png',
-    '/Category/fruit.png',
-    '/Category/animals.png',
+    'Category/drink.png',
+    'Category/groceries.png',
+    'Category/breads.png',
+    'Category/cosmetics.png',
+    'Category/fruit.png',
+    'Category/animals.png',
   ]),
 };
 

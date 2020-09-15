@@ -25,9 +25,11 @@ const Wrapper = styled.div`
 
   @media (max-width: 374px) {
     width: 80vw;
+    height: 80vh;
   }
   @media (min-width: 375px) and (max-width: 768px) {
-    width: 60vw;
+    width: 80vw;
+    height: 80vh;
   }
   @media (min-width: 769px) {
     width: 500px;

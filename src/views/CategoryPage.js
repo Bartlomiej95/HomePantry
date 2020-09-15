@@ -38,6 +38,10 @@ const ButtonAddItemSpan = styled.span`
   font-size: 15px;
   font-weight: bold;
   margin-right: 12px;
+
+  @media (max-width: 768px) {
+    font-size: 0px;
+  }
 `;
 
 const CategoryPage = ({ products, category, transformEditedId, ...props }) => {
