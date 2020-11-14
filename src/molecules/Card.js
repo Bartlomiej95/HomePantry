@@ -42,9 +42,14 @@ const CardContentWrapper = styled.div`
   }
 `;
 
-const DivImg = styled.img`
+const DivImg = styled.div`
   height: 30px;
   width: 30px;
+
+  img{
+    max-width: 100%;
+    max-height: 100%;
+  }
 
   @media (max-width: 374px) {
     height: 25px;
@@ -91,7 +96,6 @@ const Card = ({
   const afterEditClick = () => {
     statusFnEditForm(id);
   };
-
   return (
     <CardWrapper>
       <CardHeadingWrapper>
@@ -99,7 +103,9 @@ const Card = ({
       </CardHeadingWrapper>
 
       <CardContentWrapper>
-        <DivImg src={iconCategory} />
+        <DivImg >
+          <img src={`../${iconCategory}`} alt="produkt" />
+        </DivImg>
         <ProductNameHeading>{name}</ProductNameHeading>
         <ProductAmountHeading>{`${amount}${unit}`}</ProductAmountHeading>
       </CardContentWrapper>
