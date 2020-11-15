@@ -147,7 +147,6 @@ const Menu = ({ children, isVisible, isNoClicked }) => {
 
         {children}
       </StyledWrapper>
-      {console.log(`ISnoClicked ${isNoClicked}`)}
       <MenuButtonIcon
         icon={MenuIcon}
         onClick={() => setFlyoutMenu(!flyoutMenu)}

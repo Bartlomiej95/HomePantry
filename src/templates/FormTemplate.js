@@ -122,13 +122,11 @@ const FormTemplate = ({
   const [valueUnit, setValueUnit] = useState('');
 
   const handleChange = (e) => {
-    console.log(e.target.name);
     e.target.name === 'limit' && setValueLimit(e.target.value);
     e.target.name === 'id' && setValueId(e.target.value);
     e.target.name === 'name' && setValueName(e.target.value);
     e.target.name === 'amount' && setValueAmount(e.target.value);
     e.target.name === 'unit' && setValueUnit(e.target.value);
-    console.log(e.target.value);
   };
 
   const handleSubmit = (e) => {

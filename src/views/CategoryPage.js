@@ -99,7 +99,7 @@ const CategoryPage = ({ products, category, transformEditedId, ...props }) => {
                 unit={product.unit}
                 categoryName={categoryNameFromPath}
                 isNoClicked={isAvailableNewItem}
-                statusFnEditForm={() => changeStatusEditForm(idFromCard)}
+                statusFnEditForm={() => changeStatusEditForm(product.id)}
               />
             )
           );
@@ -123,7 +123,7 @@ const CategoryPage = ({ products, category, transformEditedId, ...props }) => {
       {flagEditForm && (
         <FormTemplate
           type="edit"
-          idEditedProduct={idFromCard}
+          editedIdProduct={idFromCard}
           deleteForm={(option) => changeStatusForm((option = 'edit'))}
           exitForm={() => exitFormAfterSubmit}
         />

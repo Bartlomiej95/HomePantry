@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Button = styled.button`
   background-color: ${({ theme }) => theme.backgroundColor.main};
   color: black;
+  cursor: pointer;
 `;
 
 export const ButtonAddItem = styled(Button)`
@@ -21,6 +22,10 @@ export const ButtonEdit = styled(Button)`
   font-size: 10px;
   font-weight: bold;
   align-self: center;
+
+  :hover{
+    background-color: ${({ theme }) => theme.backgroundColor.second}
+  }
 `;
 
 export const ButtonDelete = styled(Button)`

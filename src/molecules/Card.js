@@ -91,7 +91,6 @@ const Card = ({
 }) => {
   const chooseCategory = category.filter((category) => category.name === categoryName);
   const iconCategory = chooseCategory[0].icon;
-  console.log(iconCategory);
 
   const afterEditClick = () => {
     statusFnEditForm(id);
@@ -110,7 +109,7 @@ const Card = ({
         <ProductAmountHeading>{`${amount}${unit}`}</ProductAmountHeading>
       </CardContentWrapper>
       {/* Klik wskazuje na funkcje statusEditForm z rodzica CategoryPage. Tam  */}
-      <ButtonEdit disabled={isNoClicked} onClick={afterEditClick}>
+      <ButtonEdit disabled={isNoClicked} onClick={() => afterEditClick()}>
         Edytuj
       </ButtonEdit>
       <ButtonDelete onClick={() => removeProduct(id)} disabled={isNoClicked}>
